@@ -50,18 +50,17 @@ class BookmarksController extends Controller
         return view('update', compact('bookmark'));
     }
 
-    public function update($id)
+    public function update(Bookmark $bookmark)
     {
         $this->validate(request(),[
             'bookmark' => 'required',
             'url' => 'required'
         ]);
-        $bookmarkUpdate = Bookmark::find($id);
 
-        $bookmarkUpdate->bookmark_name = request('bookmark');
-        $bookmarkUpdate->url = request('url');
+        $$bookmark->bookmark_name = request('bookmark');
+        $$bookmark->url = request('url');
 
-        $bookmarkUpdate->save();
+        $bookmark->save();
         return redirect('/');
     }
     
