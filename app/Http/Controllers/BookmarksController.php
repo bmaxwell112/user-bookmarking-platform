@@ -25,18 +25,14 @@ class BookmarksController extends Controller
         return view('create');
     }
 
-    public function store()
+    public function store(StoreBookmarks)
     {
-        $this->validate(request(),[
-            'bookmark' => 'required',
-            'url' => 'required'
-        ]);
         $bookmark = new Bookmark;
 
         $bookmark->bookmark_name = request('bookmark');
         $bookmark->url = request('url');
         $bookmark->user_id = auth()->id();
-
+        
         $bookmark->save();
         return redirect('/');
     }
@@ -50,15 +46,10 @@ class BookmarksController extends Controller
         return view('update', compact('bookmark'));
     }
 
-    public function update(Bookmark $bookmark)
+    public function update(StoreBookmarks $bookmark)
     {
-        $this->validate(request(),[
-            'bookmark' => 'required',
-            'url' => 'required'
-        ]);
-
-        $$bookmark->bookmark_name = request('bookmark');
-        $$bookmark->url = request('url');
+        $bookmark->bookmark_name = request('bookmark');
+        $bookmark->url = request('url');
 
         $bookmark->save();
         return redirect('/');
