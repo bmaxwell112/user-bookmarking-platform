@@ -11,28 +11,15 @@
 |
 */
 
+Route::resource('/', 'BookmarksController')->name('home')
 
-Route::get('/', 'BookmarksController@index')->name('home');
-
-Route::get('/create', 'BookmarksController@create');
-
-Route::post('/', 'BookmarksController@store');
-
-Route::get('/register', 'RegistrationController@create');
-
-Route::post('/register', 'RegistrationController@store');
+Route::resource('/register', 'RegistrationController')
 
 Route::get('/login', 'SessionsController@create')->name('login');
 
 Route::post('/login', 'SessionsController@store');
 
 Route::post('/logout', 'SessionsController@destroy')->name('logout');
-
-Route::get('/update/{bookmark}', 'BookmarksController@show');
-
-Route::post('/update/{bookmarkID}', 'BookmarksController@update');
-
-Route::get('/delete/{bookmark}', 'BookmarksController@delete');
 
 Route::post('/delete/{bookmark}', 'BookmarksController@deleteConfirm');
 
