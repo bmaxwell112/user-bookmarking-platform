@@ -11,9 +11,9 @@
 |
 */
 
-Route::resource('/', 'BookmarksController')->name('home')
+Route::resource('/', 'BookmarksController')->name('home');
 
-Route::resource('/register', 'RegistrationController')
+Route::resource('/register', 'RegistrationController');
 
 Route::get('/login', 'SessionsController@create')->name('login');
 
